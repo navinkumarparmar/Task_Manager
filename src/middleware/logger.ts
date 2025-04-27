@@ -7,5 +7,5 @@ export const loggerMiddleware = (req: Request, res: Response, next: NextFunction
 
   console.log(`[${timestamp}] ${method} ${url}`);
 
-  next();  // Move to the next middleware or route handler
+  next();  
 };
