@@ -7,7 +7,7 @@ export interface IUser extends Document {
     password: string;
 }
 interface AuthenticatedRequest extends Request {
-    user?: any; // ya specific type agar user ka structure pata hai
+    user?: any; 
   }
 
 const UserSchema: Schema = new Schema(
