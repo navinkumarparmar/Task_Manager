@@ -1,15 +1,17 @@
 import mongoose from 'mongoose';
 
+console.log("process.env.MONGO_URI", process.env.MONGO_URI);
+
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI || 'mongodb://admin:admin123@localhost:27017/taskdb?authSource=admin', {
-      // useNewUrlParser: true,
-      // useUnifiedTopology: true,
+    console.log("⏳ Connecting to MongoDB...");
+    await mongoose.connect(process.env.MONGO_URI as string,{
+      serverSelectionTimeoutMS: 10000, // 10 seconds timeout
     });
-    console.log('MongoDB connected successfully');
+    console.log('✅ MongoDB connected successfully');
   } catch (err) {
-    console.error('MongoDB connection error:', err);
-    process.exit(1);  // EXIT if connection fails
+    console.error('❌ MongoDB connection error:', err);
+    process.exit(1);
   }
 };
 
